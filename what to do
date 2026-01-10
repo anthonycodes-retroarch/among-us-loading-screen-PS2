@@ -1,0 +1,10 @@
+What you’re making
+A PS2 intro app that:
+Runs on real PS2 (with FMCB) or emulator
+Shows an Among Us loading screen
+Acts like a boot screen
+100% safe (no BIOS mods)
+What you need
+PC
+PCSX2 (emulator) or real PS2 with Free McBoot
+PS2SDK
