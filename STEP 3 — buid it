@@ -1,0 +1,11 @@
+create a makefile:
+EE_BIN = amongus_boot.elf
+EE_OBJS = main.o
+
+all: $(EE_BIN)
+
+clean:
+	rm -f *.o *.elf
+
+include $(PS2SDK)/samples/Makefile.pref
+include $(PS2SDK)/samples/Makefile.eeglobal
