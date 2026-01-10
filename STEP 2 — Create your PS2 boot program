@@ -1,0 +1,47 @@
+main.c
+ past into the homebrew
+#include <tamtypes.h>
+#include <kernel.h>
+#include <gsKit.h>
+#include <dmaKit.h>
+#include <draw.h>
+#include <stdio.h>
+
+GSGLOBAL *gsGlobal;
+
+int main()
+{
+    dmaKit_init(D_CTRL_RELE_OFF, D_CTRL_MFD_OFF, D_CTRL_STS_UNSPEC, D_CTRL_STD_OFF, D_CTRL_RCYC_8);
+    dmaKit_chan_init(DMA_CHANNEL_GIF);
+
+    gsGlobal = gsKit_init_global();
+    gsGlobal->Mode = GS_MODE_NTSC;
+    gsGlobal->Width = 640;
+    gsGlobal->Height = 448;
+    gsGlobal->Interlace = GS_INTERLACED;
+    gsGlobal->Field = GS_FIELD;
+    gsGlobal->ZBuffering = GS_SETTING_OFF;
+
+    gsKit_init_screen(gsGlobal);
+
+    int frame = 0;
+
+    while (frame < 300)   // ~5 seconds
+    {
+        gsKit_clear(gsGlobal, GS_SETREG_RGBAQ(0x00,0x00,0x00,0x00,0x00));
+
+        char text[64];
+        int dots = (frame / 30) % 4;
+        sprintf(text, "AMONG US LOADING%s", dots==0?"":dots==1?".":dots==2?"..":"...");
+
+        gsKit_font_print(gsGlobal, 250, 220, 1, 1.5f, GS_SETREG_RGBAQ(255,255,255,0,0), text);
+
+        gsKit_queue_exec(gsGlobal);
+        gsKit_sync_flip(gsGlobal);
+
+        frame++;
+    }
+
+    SleepThread();
+    return 0;
+}
