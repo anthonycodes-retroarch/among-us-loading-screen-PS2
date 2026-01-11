@@ -1,0 +1,23 @@
+On real PS2
+Copy amongus_boot.elf to:
+USB
+Memory card
+Network share
+Run it using:
+uLaunchELF (from Free McBoot)
+Make it act like a real boot screen
+With Free McBoot, you can set this as auto-launch:
+Open FMCB Configurator
+Set OSDSYS shortcut to:
+Copy code
+
+amongus_boot.elf
+Now every time PS2 starts →
+Your Among Us boot screen runs first.
+What this gives you
+✅ Real PS2 program
+✅ Runs on real hardware
+✅ Safe
+✅ Looks like a boot screen
+❌ Doesn’t replace Sony BIOS logo
+That’s the maximum possible on PS2 without hardware mods.
